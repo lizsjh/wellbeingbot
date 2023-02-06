@@ -2,30 +2,30 @@ var botui=new BotUI('app');
 const response=new Array();
 
 botui.message.add({
-    delay:2000,
+    delay:3000,
     loading: true,
     content: 'Hello. This is Alex, and I am a well-being chatbot from DailyNote. I will be assisting you with your jounraling.'
 }).then(function(){
     return botui.message.add({
-        delay:2000,
+        delay:4000,
         loading: true,
         content:'Throughout our conversation, I will ask you some open-ended questions. You can respond to them as you want.'
     });
 }).then(function(){
     return botui.message.add({
-        delay:3500,
+        delay:5000,
         loading: true,
         content:'Because I want you to have a journaling experience, I will not respond to your thoughts, but just ask you questions and keep the flow going.'
     });
 }).then(function(){
     return botui.message.add({
-        delay:2000,
+        delay:3000,
         loading: true,
         content:'Everything you share will be strictly confidential between us.'
     });
 }).then(function(){
     return botui.message.add({
-        delay:2000,
+        delay:3000,
         loading: true,
         content:'Now let`s start! How was your day?'
     });

@@ -43,25 +43,48 @@ botui.message.add({
     return botui.message.add({
         delay:2000,
         loading: true,
-        content:'What kind of emotions did you feel today?'
+        content:'What kind of emotion did you feel today?'
     });
 }).then(function(){
-    return botui.action.text({
-        action: {
-          placeholder: 'Enter your message.'
-        }
-    
+    return botui.action.button({
+        action: [
+          { text: 'Fear',
+            value: 'Fear' 
+          },
+          { text: 'Anger',
+            value: 'Anger' 
+          },
+          { text: 'Joy',
+            value: 'Joy'
+          },
+          { text: 'Sadness',
+            value: 'Sadness' 
+          },
+          { text: 'Disgust',
+            value: 'Disgust' 
+          },
+          { text: 'Surprise',
+            value: 'Surprise' 
+          }
+        ]
     });
 }).then(function (res) { 
     console.log(res.value);
     response.push(res.value);
-}).then(function(){
-    return botui.message.add({
-        delay:2000,
-        loading: true,
-        content:'What made you feel those emotions?'
-    });
-}).then(function(){
+}).then(if (response[1]="Joy") {
+        function(){
+            return botui.message.add({
+            delay:2000,
+            loading: true,
+            content:'I am glad you felt that way. What made you feel that?'
+    })}} else {
+            function(){
+            return botui.message.add({
+            delay:2000,
+            loading: true,
+            content:'I am sorry you felt that way. What made you feel that?'
+    })}};
+).then(function(){
     return botui.action.text({
         action: {
           placeholder: 'Enter your message.'

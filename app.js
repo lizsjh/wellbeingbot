@@ -83,8 +83,8 @@ botui.message.add({
             delay:2000,
             loading: true,
             content:'I am sorry you felt that way. What made you feel that?'
-    })};};
-).then(function(){
+    })};
+}).then(function(){
     return botui.action.text({
         action: {
           placeholder: 'Enter your message.'

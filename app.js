@@ -71,15 +71,14 @@ botui.message.add({
 }).then(function (res) { 
     console.log(res.value);
     response.push(res.value);
-}).then (if (response[1]="Joy") {
-        function(){
+}).then (function () {
+     if (response[1]="Joy") {
             return botui.message.add({
             delay:2000,
             loading: true,
             content:'I am glad you felt that way. What made you feel that?'
             });
-       }} else {
-         function(){
+      } else {
             return botui.message.add({
             delay:2000,
             loading: true,

@@ -71,7 +71,7 @@ botui.message.add({
 }).then(function (res) { 
     console.log(res.value);
     response.push(res.value);
-}).then(if (response[1]="Joy") {
+}).if (response[1]="Joy") {
         function(){
             return botui.message.add({
             delay:2000,
@@ -84,7 +84,7 @@ botui.message.add({
             loading: true,
             content:'I am sorry you felt that way. What made you feel that?'
     })};
-}).then(function(){
+}.then(function(){
     return botui.action.text({
         action: {
           placeholder: 'Enter your message.'

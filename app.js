@@ -94,28 +94,20 @@ botui.message.add({
 }).then(function (res) { 
     console.log(res.value);
     response.push(res.value);
-}).then(function(){
-    return botui.message.add({
-        delay:3000,
-        loading: true,
-        content:'Can you share with me one positive thing that happened to you today?'
-    });
-}).then(function(){
-    return botui.action.text({
-        action: {
-          placeholder: 'Enter your message.'
-        }
-        });
-}).then(function (res) { 
-    console.log(res.value);
-    response.push(res.value);
-}).then(function(){
-    return botui.message.add({
-        delay:3000,
-        loading: true,
-        content:'Can you share with me one thing that has been bothering you today?'
-    });
-}).then(function(){
+}).then (function () {
+     if (response[1]=="Joy") {
+            return botui.message.add({
+            delay:3000,
+            loading: true,
+            content:'Thank you for sharing. I know you have been doing great, but can you share with me one thing that has been bothering you today?'
+            });
+      } else {
+            return botui.message.add({
+            delay:3000,
+            loading: true,
+            content:'Thank you for sharing. I know you have not been doing great, but can you share with me one positive thing that happened to you today?'
+            });
+}}).then(function(){
     return botui.action.text({
         action: {
           placeholder: 'Enter your message.'
@@ -157,5 +149,5 @@ botui.message.add({
 });
 
 function sendcomplete(){
-    window.parent.postMessage({"message": "completed","text1":response[0],"text2":response[1],"text3":response[2], "text4":response[3], "text5":response[4], "text6":response[5]}, "*");
+    window.parent.postMessage({"message": "completed","text1":response[0],"text2":response[1],"text3":response[2], "text4":response[3], "text5":response[4]}, "*");
 };

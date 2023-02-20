@@ -72,7 +72,7 @@ botui.message.add({
     console.log(res.value);
     response.push(res.value);
 }).then (function () {
-     if (response[1]="Joy") {
+     if (response[1]=="Joy") {
             return botui.message.add({
             delay:2000,
             loading: true,

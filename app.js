@@ -30,11 +30,21 @@ botui.message.add({
         content:'Now let`s start! How was your day?'
     });
 }).then(function(){
-    return botui.action.text({
-        action: {
-          placeholder: 'Enter your message.'
-        }
-    
+    return botui.action.button({
+        action: [
+          { text: 'Great',
+            value: 'Great' 
+          },
+          { text: 'Fine',
+            value: 'Fine' 
+          },
+          { text: 'Bad',
+            value: 'Bad' 
+          },
+          { text: 'Horrible',
+            value: 'Horrible' 
+          }
+        ]
     });
 }).then(function (res) { 
     console.log(res.value);
@@ -45,34 +55,49 @@ botui.message.add({
         loading: true,
         content:'What kind of emotion did you feel today?'
     });
-}).then(function(){
-    return botui.action.button({
-        action: [
-          { text: 'Fear',
-            value: 'Fear' 
-          },
-          { text: 'Anger',
-            value: 'Anger' 
-          },
-          { text: 'Joy',
-            value: 'Joy'
-          },
-          { text: 'Sadness',
-            value: 'Sadness' 
-          },
-          { text: 'Disgust',
-            value: 'Disgust' 
-          },
-          { text: 'Surprise',
-            value: 'Surprise' 
-          }
-        ]
-    });
+}).then (function () {
+     if (response[0]=="Great" || response[0]=="Fine") {
+            return botui.action.button({
+                action: [
+                { text: 'Joy',
+                  value: 'Joy' 
+                },
+                { text: 'Anticipation',
+                  value: 'Anticipation' 
+                },
+                { text: 'Trust',
+                  value: 'Trust'
+                },
+                { text: 'Surprise',
+                  value: 'Surprise' 
+                }
+                ]
+            });
+      } else {
+            return botui.action.button({
+                action: [
+                { text: 'Fear',
+                  value: 'Fear' 
+                },
+                { text: 'Anger',
+                  value: 'Anger' 
+                },
+                { text: 'Sadness',
+                  value: 'Sadness' 
+                },
+                { text: 'Disgust',
+                  value: 'Disgust' 
+                },
+                { text: 'Surprise',
+                  value: 'Surprise' 
+                }
+                ]
+            });
 }).then(function (res) { 
     console.log(res.value);
     response.push(res.value);
 }).then (function () {
-     if (response[1]=="Joy") {
+     if (response[0]=="Great" || response[0]=="Fine") {
             return botui.message.add({
             delay:2000,
             loading: true,
@@ -95,7 +120,7 @@ botui.message.add({
     console.log(res.value);
     response.push(res.value);
 }).then (function () {
-     if (response[1]=="Joy") {
+     if (response[0]=="Great" || response[0]=="Fine") {
             return botui.message.add({
             delay:3000,
             loading: true,
@@ -123,22 +148,11 @@ botui.message.add({
         content:'I applaud you for taking the first step in sharing your feelings with me. I appreciate your faith in me.'
     });
 }).then(function(){
-    return botui.action.button({
-        action: [
-          { text: 'No problem at all',
-            value: 'No problem at all' 
-          },
-          { text: 'Thank you as well',
-            value: 'Thank you as well' 
-          },
-          { text: 'Glad to hear that',
-            value: 'Glad to hear that'
-          }
-        ]
+    return botui.message.add({
+        delay:2000,
+        loading: true,
+        content:'Let`s end today`s journaling here, and I will talk to you another day. Thank you and have a great rest of your day. Bye!'
     });
-}).then(function (res) { 
-        console.log(res.value); 
-        response.push(res.value);   
 }).then(function(){
     sendcomplete();
     return botui.message.add({
@@ -149,5 +163,5 @@ botui.message.add({
 });
 
 function sendcomplete(){
-    window.parent.postMessage({"message": "completed","text1":response[0],"text2":response[1],"text3":response[2], "text4":response[3], "text5":response[4]}, "*");
+    window.parent.postMessage({"message": "completed","text1":response[0],"text2":response[1],"text3":response[2], "text4":response[3]}, "*");
 };

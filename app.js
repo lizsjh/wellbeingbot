@@ -93,7 +93,7 @@ botui.message.add({
                 }
                 ]
             });
-}).then(function (res) { 
+}}).then(function (res) { 
     console.log(res.value);
     response.push(res.value);
 }).then (function () {

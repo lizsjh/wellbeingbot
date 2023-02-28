@@ -53,7 +53,7 @@ botui.message.add({
     return botui.message.add({
         delay:2000,
         loading: true,
-        content:'What kind of emotion did you feel today?'
+        content:'What kind of emotion did you feel the most today?'
     });
 }).then (function () {
      if (response[0]=="Great" || response[0]=="Fine") {
@@ -151,7 +151,7 @@ botui.message.add({
     return botui.message.add({
         delay:2000,
         loading: true,
-        content:'Let`s end today`s journaling here, and I will talk to you another day. Thank you and have a great rest of your day. Bye!'
+        content:'Let`s end today`s journaling here, and I will talk to you another day.'
     });
 }).then(function(){
     sendcomplete();
